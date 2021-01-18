@@ -9,6 +9,7 @@ const Library = ({audioRef, songs, setCurrentSong, isPlaying}) => {
                 {songs.map(song => <LibrarySong song={song}
                 setCurrentSong={setCurrentSong}
                 songs={songs}
+                id={song.id}
                 key={song.id}
                 audioRef={audioRef}
                 isPlaying={isPlaying}/>)}

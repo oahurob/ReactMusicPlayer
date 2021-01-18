@@ -13,7 +13,6 @@ function App() {
   const [songs, setSongs] = useState(data());
   const [currentSong, setCurrentSong] = useState(songs[0]);
   const [isPlaying, setIsPlaying] = useState(false);
-  //State
   const [songInfo, setSongInfo] = useState({
     currentTime: 0,
     duration: 0,
@@ -30,14 +29,16 @@ function App() {
         setIsPlaying={setIsPlaying}
         isPlaying={isPlaying}
         currentSong={currentSong}
-        auidoRef={audioRef}
+        setCurrentSong={setCurrentSong}
+        audioRef={audioRef}
         setSongInfo={setSongInfo}
         songInfo={songInfo}/>
       <Library 
-        audioRef={audioRef} 
-        songs={songs} 
+        songs={songs}
         setCurrentSong={setCurrentSong}
-        isPlaying={isPlaying}/>
+        audioRef={audioRef}
+        isPlaying={isPlaying}
+        setSongs={setSongs}/>
       <h1>audio</h1>
       <audio onTimeUpdate={timeUpdateHandler}
         onLoadedMetadata={timeUpdateHandler}

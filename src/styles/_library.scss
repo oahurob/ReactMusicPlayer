@@ -2,11 +2,14 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 30%;
+    width: 25%;
     height: 100%;
     background-color: white;
     box-shadow: 2px 2px 25px rgb(204, 204, 204);
     overflow: scroll;
+    transform: translateX(-100%);
+    transition: all 0.5s ease;
+    opacity: 0;
     h2{
         padding: 2rem;
     }
@@ -57,5 +60,10 @@
 }
 
 .selected{
-    background: violet;
+    background: rgb(168, 192, 243);
+}
+
+.active-library{
+    transform: translateX(0%);
+    opacity: 1;
 }

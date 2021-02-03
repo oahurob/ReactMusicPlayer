@@ -1,27 +1,34 @@
 import React from 'react';
-import { playAudio } from "../util";
+import { playAudio } from '../util';
 
-const LibrarySong = ({song, songs, setCurrentSong, id, audioRef, isPlaying}) => {
+const LibrarySong = ({song, songs, setCurrentSong, id, audioRef, isPlaying, setSongs}) => {
 
     const songSelectHandler = () => {
         //work on selectedSong not working
         const selectedSong = songs.filter((state) => state.id === id);
-        console.log(id);
         setCurrentSong(selectedSong[0]);
-        //check isPlaying
-        if(isPlaying){
-            const playPromise = audioRef.current.play();
-            if(playPromise !== undefined){
-                playPromise.then((audio) => {
-                    audioRef.current.play();
-                });
+        //add active state
+        const newSongs = songs.map((song) => {
+            if(song.id === id){
+                return{
+                    ...song,
+                    active: true,
+                };
+            }else{
+                return{
+                    ...song,
+                    active: false,
+                };
             }
-        }
+        });
+        setSongs(newSongs);
+        //check isPlaying
+        playAudio(isPlaying, audioRef);
     };
 
     return(
         <div onClick={songSelectHandler} className={`library-song ${song.active ? 'selected' : ""}`}>
-            <img  alt={song.name} src={song.cover} alt="song-cover"></img>
+            <img src={song.cover} alt="song-cover"></img>
             <div className="song-description">
                 <h3>{song.name}</h3>
                 <h4>{song.artist}</h4>

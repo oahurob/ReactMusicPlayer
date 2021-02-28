@@ -52,7 +52,7 @@ function App() {
         ref={audioRef} 
         src={currentSong.audio}>
       </audio>
-      <p>Link</p>
+      <p>Link second</p>
     </div>
   );
 }
